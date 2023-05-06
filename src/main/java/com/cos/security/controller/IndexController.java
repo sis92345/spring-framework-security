@@ -1,8 +1,11 @@
 package com.cos.security.controller;
 
+import com.cos.security.base.constant.Role;
 import com.cos.security.service.user.UserService;
 import com.cos.security.service.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
 		
 		private final UserService userService;
+		
+		private final PasswordEncoder passwordEncoder;
 		
 		/**
 		 * 머스태치 기본 폴더는 resource / templates / .mustache
@@ -59,9 +64,15 @@ public class IndexController {
 		 * ** Security에서 패스워드가 암호화되어 있지 않으면 예외가 발생한다.
 		 * */
 		@PostMapping( "/join" )
-		public @ResponseBody String joinProc ( User user ) {
+		public String joinProc ( User user ) {
 				
-				User result = userService.save( user );
+				if ( user == null ) {
+						throw new RuntimeException( "유저 정보가 비어 있습니다." );
+				}
+				
+				user.setRole( Role.MANAGER.getRole() );
+				
+				userService.save( user );
 				
 				return "redirect:/loginForm";
 		}

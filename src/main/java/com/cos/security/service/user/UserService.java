@@ -5,4 +5,6 @@ import com.cos.security.service.user.entity.User;
 public interface UserService {
 		
 		public User save ( User user );
+		
+		public User getByUserName ( String userName );
 }
