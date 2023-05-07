@@ -1,7 +1,8 @@
-package com.cos.security.base.security.filterChain.impl;
+package com.cos.security.base.security.filterChain.impl.form;
 
 import com.cos.security.base.annotation.SecurityFilterChain;
 import com.cos.security.base.constant.Role;
+import com.cos.security.base.constant.SecurityType;
 import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,5 +28,10 @@ public class URLAccessFilterChain implements SecurityFilterChainConfigurer {
 											 .permitAll();
 				
 				return sec;
+		}
+		
+		@Override
+		public SecurityType getSecurityType() {
+				return SecurityType.FORM;
 		}
 }

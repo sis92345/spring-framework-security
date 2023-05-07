@@ -1,10 +1,14 @@
-package com.cos.security.base.security.filterChain.impl;
+package com.cos.security.base.security.filterChain.impl.form;
 
 import com.cos.security.base.annotation.SecurityFilterChain;
+import com.cos.security.base.constant.SecurityType;
 import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+/**
+ * Username과 Password로 인증하는 인증 필터, 이거 구현하면 자동으로 /login endpoint 생김
+ * */
 @SecurityFilterChain
 @Slf4j
 public class LoginFilterChain implements SecurityFilterChainConfigurer {
@@ -26,5 +30,10 @@ public class LoginFilterChain implements SecurityFilterChainConfigurer {
 				   .defaultSuccessUrl( "/" );
 				
 				return sec;
+		}
+		
+		@Override
+		public SecurityType getSecurityType() {
+				return SecurityType.FORM;
 		}
 }

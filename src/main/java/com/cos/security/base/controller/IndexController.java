@@ -1,14 +1,10 @@
-package com.cos.security.controller;
+package com.cos.security.base.controller;
 
 import com.cos.security.base.constant.Role;
 import com.cos.security.service.user.UserService;
 import com.cos.security.service.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
 		
 		private final UserService userService;
-		
-		private final PasswordEncoder passwordEncoder;
 		
 		/**
 		 * 머스태치 기본 폴더는 resource / templates / .mustache
@@ -61,25 +55,9 @@ public class IndexController {
 				return "joinForm";
 		}
 		
-		@GetMapping( "/info" )
-		@Secured( "ROLE_ADMIN" )
-		public @ResponseBody ResponseEntity<?> info () {
-				
-				return ResponseEntity.ok( "개인정보" );
-		}
-		
-		@GetMapping( "/server" )
-		@PreAuthorize( "hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')" )
-		public @ResponseBody ResponseEntity<?> server () {
-				
-				return ResponseEntity.ok( "개인정보" );
-		}
-		
-		@GetMapping( "/client" )
-		@PostAuthorize( "hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')" )
-		public @ResponseBody ResponseEntity<?> client () {
-				
-				return ResponseEntity.ok( "개인정보" );
+		@PostMapping( "/test" )
+		public @ResponseBody ResponseEntity<?> test () {
+				return ResponseEntity.ok( "Test" );
 		}
 		
 		/**

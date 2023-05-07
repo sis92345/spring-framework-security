@@ -1,28 +1,27 @@
-package com.cos.security.base.security.filterChain.impl;
+package com.cos.security.base.security.filterChain.impl.jwt;
 
-import com.cos.security.base.annotation.SecurityFilterChain;
 import com.cos.security.base.constant.SecurityType;
 import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.stereotype.Component;
 
-@SecurityFilterChain
+@Component
 @Slf4j
-public class CSRFFilterChain implements SecurityFilterChainConfigurer {
-		
+public class JWTLoginFilterChain implements SecurityFilterChainConfigurer {
 		
 		@Override
 		public HttpSecurity configure( HttpSecurity sec ) throws Exception {
 				
-				log.info( "CSFR 설정" );
+				log.info( "JWT 로그인 설정" );
 				
-				sec.csrf().disable();
+				sec.formLogin().disable();
 				
 				return sec;
 		}
 		
 		@Override
 		public SecurityType getSecurityType() {
-				return SecurityType.BOTH;
+				return SecurityType.JWT;
 		}
 }
