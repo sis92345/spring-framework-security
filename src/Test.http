@@ -1,0 +1,28 @@
+### AUTH TEST
+POST http://localhost:8080/test
+Content-Type: application/json
+Authorization: ted
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+### AUTH FAIL TEST
+POST http://localhost:8080/test
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+### LOGIN
+POST http://localhost:8080/login
+Content-Type: application/json
+Authorization: ted
+
+{
+"username": "ted",
+"password": "ted"
+}
