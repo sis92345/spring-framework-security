@@ -2,9 +2,9 @@ package com.cos.security.base.constant;
 
 public enum Role {
 		
-		ADMIN ( "admin" , "최고 관리자"),
-		MANAGER ( "manager" , "메니저"),
-		USER ( "user" , "사용자");
+		ADMIN ( "ADMIN" , "최고 관리자"),
+		MANAGER ( "MANAGER" , "메니저"),
+		USER ( "USER" , "사용자");
 		
 		;
 		

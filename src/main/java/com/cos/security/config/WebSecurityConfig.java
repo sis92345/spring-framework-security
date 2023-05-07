@@ -4,6 +4,7 @@ import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurerF
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
  * */
 @Configuration
 @EnableWebSecurity // EnableWebSecurity annotation이 있으면 SpringSecurityFilter가 스프링 필터 체인에 추가된다.
+@EnableMethodSecurity( securedEnabled = true , prePostEnabled = false) // Secured Annotation 활성화
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 		
@@ -27,21 +29,6 @@ public class WebSecurityConfig {
 		public SecurityFilterChain httpSecurityFilterChain ( HttpSecurity sec ) throws Exception {
 				
 				factory.setSecurityConfig( sec );
-				//sec.csrf().disable();
-				
-//				sec.authorizeHttpRequests().requestMatchers( "/user/**" )
-//										   .authenticated()
-//										   .requestMatchers( "/manager/**" )
-//										   .hasAnyAuthority( "ROLE_ADMIN", "ROLE_MANAGER" )
-//										   .requestMatchers( "/admin/**" )
-//										   .hasRole( "ADMIN" )
-//										   .anyRequest()
-//										   .permitAll()
-//										   .and()
-//										   .formLogin()
-//							 			   .loginPage( "/loginForm" )
-//										   .loginProcessingUrl( "/login" ).defaultSuccessUrl( "/" ); // login 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행한다. -> Controller login이 필요 없다.
-//
 				
 				return sec.build();
 		}
@@ -49,7 +36,7 @@ public class WebSecurityConfig {
 		
 		
 		/**
-		 * Password 암호화
+		 * PasswordEncode
 		 * */
 		@Bean
 		public PasswordEncoder passwordEncoder () {
