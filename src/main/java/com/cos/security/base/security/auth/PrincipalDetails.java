@@ -1,6 +1,7 @@
 package com.cos.security.base.security.auth;
 
 import com.cos.security.service.user.entity.User;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import java.util.Collection;
  * 이 클래스는 User Detail를 상속한 것
  * */
 @RequiredArgsConstructor
+@Getter
 public class PrincipalDetails implements UserDetails {
 		
 		private final User user; // Composition

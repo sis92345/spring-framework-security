@@ -19,21 +19,20 @@ import org.springframework.security.web.SecurityFilterChain;
  * */
 @Configuration
 @EnableWebSecurity // EnableWebSecurity annotation이 있으면 SpringSecurityFilter가 스프링 필터 체인에 추가된다.
-@EnableMethodSecurity( securedEnabled = true , prePostEnabled = false) // Secured Annotation 활성화
+@EnableMethodSecurity( securedEnabled = true , prePostEnabled = false) // Secured , Pre/PostAuthorize Annotation 활성화
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 		
-		private final SecurityFilterChainConfigurerFactory factory;
+		private final SecurityFilterChainConfigurerFactory securityFilterChainConfigurerFactory;
+		
 
 		@Bean
 		public SecurityFilterChain httpSecurityFilterChain ( HttpSecurity sec ) throws Exception {
 				
-				factory.setSecurityConfig( sec );
+				securityFilterChainConfigurerFactory.setSecurityConfig( sec );
 				
 				return sec.build();
 		}
-		
-		
 		
 		/**
 		 * PasswordEncode
@@ -42,4 +41,5 @@ public class WebSecurityConfig {
 		public PasswordEncoder passwordEncoder () {
 				return new BCryptPasswordEncoder();
 		}
+		
 }

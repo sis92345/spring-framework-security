@@ -24,4 +24,8 @@ logging:
   level:
     org:
       springframework:
-        security: DEBUG
+        security: ERROR
+
+spring-sec:
+  filter:
+    chain: JWT
