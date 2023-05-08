@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Slf4j
 public class URLAccessFilterChain implements SecurityFilterChainConfigurer {
 		
+		/**
+		 * @todo Configurer Exception을 RuntimeException으로 변경 후 던져야 더 정확해진다.
+		 * */
 		@Override
 		public HttpSecurity configure( HttpSecurity sec ) throws Exception {
 				
