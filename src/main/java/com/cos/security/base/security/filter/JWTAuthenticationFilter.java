@@ -34,7 +34,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				this.authenticationManager = authenticationManager;
 		}
 		
-		@Override public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response )
+		@Override
+		public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response )
 					throws AuthenticationException {
 				
 				System.out.println( "로그인 시도 중" );
@@ -54,13 +55,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				
 				// 2. authorizationManager로 로그인 시도 -> userDetailService 실행
 				// 이때 PincipalDetailServeice loadUsernameandPassword 실행
-				Authentication auth = authenticationManager.authenticate( token );
 				
 				// 3. 결과를 PrincipalDetails에 담고
 				// 4. JWT 토큰 만들어서 처리
 				
 				// return 시키면 Security가 Session에 저장, 권한 처리 때문에 필수
-				return auth;
+				return authenticationManager.authenticate( token );
 		}
 		
 		/**
@@ -75,13 +75,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				
 				log.info( "로그인한 사용자 정보 : {}" , user.getUsername() );
 				
-				String jwt = JWT.create()
-				   .withSubject( user.getUsername() )
-				   .withExpiresAt( new Date( System.currentTimeMillis() + ( 60000 * 10 )) )
-				   .withClaim( "username" , user.getUsername() )
-				   .withClaim( "email" , user.getEmail() )
-				   .sign( Algorithm.HMAC512( JWT_SECRET_KEY ) );
-				
+				String jwt = JWT.create().withSubject( user.getUsername() )
+										 .withExpiresAt( new Date( System.currentTimeMillis() + ( 60000 * 10 )) )
+										 .withClaim( "username" , user.getUsername() )
+										 .withClaim( "email" , user.getEmail() )
+										 .sign( Algorithm.HMAC512( JWT_SECRET_KEY ) );
 				
 				response.addHeader( Header.AUTHORIZATION.getHeaderName() , jwt );
 		}
