@@ -1,8 +1,8 @@
-package com.cos.security.base.security.filterChain.factory;
+package com.cos.security.config.security.factory;
 
 import com.cos.security.base.annotation.SecurityFilterChain;
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurerFactory;
+import com.cos.security.config.security.SecurityFilterChainConfigurer;
+import com.cos.security.config.security.SecurityFilterChainConfigurerFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

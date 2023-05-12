@@ -1,7 +1,7 @@
-package com.cos.security.base.security.filterChain.impl.jwt;
+package com.cos.security.config.security.impl.jwt;
 
 import com.cos.security.base.constant.SecurityType;
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
+import com.cos.security.config.security.SecurityFilterChainConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.cos.security.base.security.filterChain;
+package com.cos.security.config.security;
 
 import com.cos.security.base.constant.SecurityType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

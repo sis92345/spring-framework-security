@@ -1,6 +1,6 @@
 package com.cos.security.base.constant;
 
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurer;
+import com.cos.security.config.security.SecurityFilterChainConfigurer;
 
 import java.util.Map;
 import java.util.function.Function;

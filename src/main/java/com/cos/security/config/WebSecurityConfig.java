@@ -1,6 +1,6 @@
 package com.cos.security.config;
 
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurerFactory;
+import com.cos.security.config.security.SecurityFilterChainConfigurerFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

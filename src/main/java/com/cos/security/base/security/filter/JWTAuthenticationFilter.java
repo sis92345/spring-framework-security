@@ -38,7 +38,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response )
 					throws AuthenticationException {
 				
-				System.out.println( "로그인 시도 중" );
+				log.debug( "로그인 요청" );
 				
 				// 1. 로그인 데이터 받기
 				ObjectMapper om = new ObjectMapper();

@@ -1,9 +1,9 @@
 package com.cos.security.config.bean;
 
 import com.cos.security.base.constant.SecurityType;
-import com.cos.security.base.security.filterChain.SecurityFilterChainConfigurerFactory;
-import com.cos.security.base.security.filterChain.factory.FormSecurityFilterChainConfigurerFactory;
-import com.cos.security.base.security.filterChain.factory.JWTSecurityFilterChainConfigurerFactory;
+import com.cos.security.config.security.SecurityFilterChainConfigurerFactory;
+import com.cos.security.config.security.factory.FormSecurityFilterChainConfigurerFactory;
+import com.cos.security.config.security.factory.JWTSecurityFilterChainConfigurerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
